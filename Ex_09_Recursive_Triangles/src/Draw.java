@@ -1,14 +1,20 @@
 import java.awt.*;
 import javax.swing.*;
 
-public class Draw {
+public class Draw extends JFrame {
 	JFrame frame;
 	
 	public Draw() {
-		frame = new JFrame("draw");
-		frame.setSize(1366, 768);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setVisible(true);
+		super();
+		setTitle("draw");
+		setSize(1366, 768);
+		setVisible(true);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	}
+	
+	public void paint(Graphics g) {
+		Dimension size = this.getSize();
+		g.drawLine(50,50,200,200);
 	}
 	
 	public static void main(String[] args) {
