@@ -48,7 +48,7 @@ public class Draw extends JFrame {
 	
 	public void drawTriangleRecursive(Point p1, Point p2, Point p3, Graphics g) {
 		steps++;
-		if(steps > 5) {
+		if(steps > 8) {
 			steps = 0;
 			return;
 		}
