@@ -30,11 +30,12 @@ public class Draw extends JFrame {
 		
 		drawTriangle(p1, p2, p3, g);
 		drawTriangle(p4, p5, p6, g);
-		drawTriangleRecursive(p4, p5, p6, g);
+		drawTriangleRecursive(p1, p4, p6, g);
+		drawTriangleRecursive(p4, p5, p2, g);
+		drawTriangleRecursive(p3, p6, p5, g);
 	}
 	
 	public void drawTriangle(Point p1, Point p2, Point p3, Graphics g) {
-
 		int[] x1 = { p1.x, p2.x, p3.x };
 		int[] y1 = { p1.y, p2.y, p3.y };
 
@@ -42,7 +43,11 @@ public class Draw extends JFrame {
 	}
 	
 	public void drawTriangleRecursive(Point p1, Point p2, Point p3, Graphics g) {
-		//steps++;
+		steps++;
+		if(steps > 5) {
+			steps = 0;
+			return;
+		}
 		Point p4 = new Point ((p1.x + p2.x)/2, (p1.y + p2.y)/2);
 		Point p5 = new Point ((p2.x + p3.x)/2, (p2.y + p3.y)/2);
 		Point p6 = new Point ((p3.x + p1.x)/2, (p3.y + p1.y)/2);
@@ -50,7 +55,7 @@ public class Draw extends JFrame {
 		int[] x2 = { p4.x, p5.x, p6.x };
 		int[] y2 = { p4.y, p5.y, p6.y };
 		
-		g.drawPolygon(x2, y2, x2.length);
+		g.fillPolygon(x2, y2, x2.length);
 		drawTriangleRecursive(p4,p5,p6, g);
 	}
 }
