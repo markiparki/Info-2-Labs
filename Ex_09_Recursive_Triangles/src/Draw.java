@@ -1,7 +1,10 @@
 import java.awt.*;
+import java.util.Random;
+
 import javax.swing.*;
 
 public class Draw extends JFrame {
+	Random r = new Random();
 	JFrame frame;
 	int steps = 0;
 
@@ -38,8 +41,9 @@ public class Draw extends JFrame {
 	public void drawTriangle(Point p1, Point p2, Point p3, Graphics g) {
 		int[] x1 = { p1.x, p2.x, p3.x };
 		int[] y1 = { p1.y, p2.y, p3.y };
-
-		g.drawPolygon(x1, y1, x1.length);
+		
+		g.setColor(new Color(r.nextInt(256), r.nextInt(256), r.nextInt(256)));
+		g.fillPolygon(x1, y1, x1.length);
 	}
 	
 	public void drawTriangleRecursive(Point p1, Point p2, Point p3, Graphics g) {
@@ -55,6 +59,7 @@ public class Draw extends JFrame {
 		int[] x2 = { p4.x, p5.x, p6.x };
 		int[] y2 = { p4.y, p5.y, p6.y };
 		
+		g.setColor(new Color(r.nextInt(256), r.nextInt(256), r.nextInt(256)));
 		g.fillPolygon(x2, y2, x2.length);
 		drawTriangleRecursive(p4,p5,p6, g);
 	}
