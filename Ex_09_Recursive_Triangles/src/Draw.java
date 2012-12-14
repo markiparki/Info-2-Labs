@@ -28,7 +28,6 @@ public class Draw extends JFrame {
 		Point p4 = new Point ((p1.x + p2.x)/2, (p1.y + p2.y)/2);
 		Point p5 = new Point ((p2.x + p3.x)/2, (p2.y + p3.y)/2);
 		Point p6 = new Point ((p3.x + p1.x)/2, (p3.y + p1.y)/2);
-		
 
 		int[] x1 = { p1.x, p2.x, p3.x };
 		int[] y1 = { p1.y, p2.y, p3.y };
@@ -38,7 +37,6 @@ public class Draw extends JFrame {
 		g.drawPolygon(x1, y1, x1.length);
 		g.drawPolygon(x2, y2, x2.length);
 		
-	
 		g.drawString("P1", p1.x, p1.y);
 		g.drawString("P2", p2.x, p2.y);
 		g.drawString("P3", p3.x, p3.y);
