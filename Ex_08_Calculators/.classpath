@@ -3,6 +3,6 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Ex_06_Reverse_Polish"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/Ex04_Abstract_Data_Type"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Ex_04_Abstract_Data_Type"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
