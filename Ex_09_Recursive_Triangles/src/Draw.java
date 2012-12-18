@@ -8,7 +8,6 @@ public class Draw extends JFrame {
 	JFrame frame;
 
 	public Draw() {
-		super();
 		setTitle("jw & ma Sierpinski Triangle");
 		setSize(Toolkit.getDefaultToolkit().getScreenSize());
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
