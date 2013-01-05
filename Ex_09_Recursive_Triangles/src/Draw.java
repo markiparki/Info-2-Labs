@@ -31,7 +31,7 @@ public class Draw extends JFrame {
 		
 		drawTriangle(p1, p2, p3, g);
 		drawTriangle(p4, p5, p6, g);
-		drawTriangleRecursive(p1, p2, p3, g);
+		drawTriangleRecursive(p1, p2, p3, 0, g);
 	}
 	
 	public void drawTriangle(Point p1, Point p2, Point p3, Graphics g) {
@@ -41,7 +41,8 @@ public class Draw extends JFrame {
 		g.drawPolygon(x1, y1, x1.length);
 	}
 	
-	public void drawTriangleRecursive(Point p1, Point p2, Point p3, Graphics g) {
+	public void drawTriangleRecursive(Point p1, Point p2, Point p3, int c,  Graphics g) {
+		int color = c;
 		//Wenn die Seite des Dreiecks kuerzer ist als 5 Pixel -> Abbruch
 		if(Math.sqrt( (p1.x-p2.x)*(p1.x-p2.x) + (p1.y-p2.y)*(p1.y-p2.y) ) < 5) {
 			return;
@@ -62,10 +63,10 @@ public class Draw extends JFrame {
 		//Für jedes der drei neu entstandenen Dreiecke:
 		
 		//unten links im Eck zeichnen
-		drawTriangleRecursive(p1, p4, p6, g);
+		drawTriangleRecursive(p1, p4, p6, color++, g);
 		//oben im Eck zeichnen
-		drawTriangleRecursive(p4, p2, p5, g);
+		drawTriangleRecursive(p4, p2, p5, color++, g);
 		//unten rechts im Eck zeichnen
-		drawTriangleRecursive(p6, p5, p3, g);
+		drawTriangleRecursive(p6, p5, p3, color++, g);
 	}
 }
