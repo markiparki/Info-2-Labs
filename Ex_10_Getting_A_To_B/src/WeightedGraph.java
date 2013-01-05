@@ -5,6 +5,7 @@ public class WeightedGraph {
 		//Initialize Graph
 		graph = new int[numberOfNodes][numberOfNodes];
 		
+		//Each Edge initialized with -1 (not connected) or 0 if it's the same node
 		for(int y = 0; y < numberOfNodes; y++) {
 			for(int x = 0; x < numberOfNodes; x++) {
 				if(x == y) {
