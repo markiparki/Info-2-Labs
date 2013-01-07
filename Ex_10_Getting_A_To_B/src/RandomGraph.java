@@ -1,3 +1,6 @@
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Random;
 
 public class RandomGraph {
@@ -40,5 +43,31 @@ public class RandomGraph {
 	//Calls the toString() method of the graph
 	public String toString() {
 		return graph.toString();
+	}
+	
+	//http://www.inf.fh-flensburg.de/lang/algorithmen/graph/breadth-first-tree.htm
+	public int[] getShortestPaths(int startNode) {
+		int[] distance = new int[graph.getNumberOfNodes()];
+		int[] prev = new int[graph.getNumberOfNodes()];
+		HashSet<Integer> visited = new HashSet<Integer>();
+		Queue<Integer> q = new LinkedList<Integer>();
+		
+		distance[startNode] = 0;
+		prev[startNode] = -1;
+		visited.add(startNode);
+		q.add(startNode);
+		
+		while(!q.isEmpty()) {
+			int head = q.remove();
+			for(int i = 0; i < graph.getNumberOfNodes(); i++) {
+				if(graph.isConnected(head, i) && !visited.contains(i)) {
+					distance[i] = distance[head]++;
+					prev[i] = head;
+					visited.add(i);
+					q.add(i);
+				}
+			}
+		}
+		return prev;
 	}
 }
