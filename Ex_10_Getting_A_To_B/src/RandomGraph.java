@@ -7,7 +7,8 @@ public class RandomGraph {
 	
 	public RandomGraph(int numberOfNodes, int numberOfEdges) throws Exception {
 		graph = new WeightedGraph(numberOfNodes);
-		possibleEdges = (int) Math.pow(graph.getNumberOfNodes(), 2)-graph.getNumberOfNodes();
+		// No. of possible edges in an undirected graph:
+		possibleEdges = ((int) Math.pow(graph.getNumberOfNodes(), 2)-graph.getNumberOfNodes())/2;
 		r = new Random();
 		
 		connectRandomNodes(numberOfEdges);
