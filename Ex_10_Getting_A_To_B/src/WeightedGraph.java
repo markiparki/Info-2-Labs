@@ -41,7 +41,7 @@ public class WeightedGraph {
 		return (graph[node1][node2] != -1)? true:(graph[node2][node1] != -1)? true:false;
 	}
 	
-	//Formatted graph output as Matrix
+	//Returns a string containing the graph formatted as a adjacency matrix
 	public String toString() {
 		String string = "Nodes\t";
 		for(int i = 0; i < graph.length; i++) {
