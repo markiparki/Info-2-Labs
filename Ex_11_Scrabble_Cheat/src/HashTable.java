@@ -9,6 +9,15 @@ public class HashTable {
 	}
 	
 	public void addWord(String word) {
+		hashTable[getHashValue(word)].add(word);
+	}
+	
+	public LinkedList<String> getWordList(int index) {
+		return hashTable[index];
+	}
+	
+	public int getHashValue(String word) {
 		
+		return 0;
 	}
 }

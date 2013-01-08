@@ -3,6 +3,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.LinkedList;
 
 
 public class Dictionary {
@@ -43,7 +44,13 @@ public class Dictionary {
 	}
 	
 	public String[] lookup(String word) {
-		
-		
+		int index = hT.getHashValue(word);
+		LinkedList<String> wordList = hT.getWordList(index);
+		String[] words = new String[wordList.size()];
+
+		for(int i = 0; i < wordList.size(); i++) {
+			words[i] = wordList.get(i);
+		}
+		return words;
 	}
 }
