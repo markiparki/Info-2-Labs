@@ -17,7 +17,11 @@ public class HashTable {
 	}
 	
 	public int getHashValue(String word) {
-		
-		return 0;
+		char[] letters = word.toCharArray();
+		int hashValue = 0;
+		for(int i = 0; i < letters.length; i++) {
+			hashValue *= letters[i]*(Math.pow(31, letters.length-(i+1)));
+		}
+		return hashValue;
 	}
 }
