@@ -16,11 +16,14 @@ public class Dictionary {
 	
 	//Fills dictionary's hash table with all the words seperated by a space from the textfile
 	private void fillDictionary(String textFile) throws IOException {
-		ArrayList<String> lineList = getFileLines(textFile);
+		ArrayList<String> lineList = readFileLines(textFile);
 		
+		//For each line from the file
 		for(String s : lineList) {
+			//Split it in words
 			String[] words = s.split(" ");
 			
+			//Add each word to the hash table
 			for(int i = 0; i < words.length; i++) {
 				hT.addWord(words[i]);
 			}
@@ -28,30 +31,39 @@ public class Dictionary {
 	}
 	
 	//Returns each line from the textfile as an ArrayList
-	private ArrayList<String> getFileLines(String textFile) throws IOException {
+	private ArrayList<String> readFileLines(String textFile) throws IOException {
 		FileReader fr = new FileReader(textFile);
 	    BufferedReader br = new BufferedReader(fr);
 	    ArrayList<String> lineList = new ArrayList<String>();
 	    
 	    String thisLine;
-	    //While the line read is not null, save it to the array list
+	    //As long as the line read is not null, save it to the array list
 		while ((thisLine = br.readLine()) != null) {
 	         lineList.add(thisLine);
 	    }
-	        
+	    
 	    br.close();
 	    return lineList;
 	}
 	
-	//Returns all the permutations from the word passed in, which are stored in the dictionary
-	public String[] lookup(String word) {
+	public LinkedList<String> lookup(String word) {
 		int index = hT.getHashValue(word);
-		LinkedList<String> wordList = hT.getWordList(index);
-		String[] words = new String[wordList.size()];
-
-		for(int i = 0; i < wordList.size(); i++) {
-			words[i] = wordList.get(i);
+		
+		//As long as there's a collision, check the next index (index+1)
+		while(hT.isCollision(word, index)) {
+			index++;
+			//If index is bigger than the hash table size, we didn't find any word list
+			if(index > hT.getHashTableSize()-1) {
+				return null;
+			}
 		}
-		return words;
+		//Take the word list at the collision-free index from the hash table
+		LinkedList<String> wordList = hT.getWordList(index);
+		//If it's null, there exists no word list for our word
+		if(wordList == null) {
+			return null;
+		} else {
+			return wordList;
+		}
 	}
 }
