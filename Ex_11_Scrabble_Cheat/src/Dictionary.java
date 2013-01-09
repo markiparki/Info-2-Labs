@@ -2,7 +2,6 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.LinkedList;
 
 
@@ -10,19 +9,17 @@ public class Dictionary {
 	HashTable hT;
 	
 	//Initializes the HashTable and fills the Dictionary with the words from the textfile 
-	public Dictionary(String textFile) throws IOException {
-		hT = new HashTable(6000);
+	public Dictionary(String textFile, int hashTableSize) throws IOException {
+		hT = new HashTable(hashTableSize);
 		fillDictionary(textFile);
 	}
 	
 	//Fills dictionary's hash table with all the words seperated by a space from the textfile
 	private void fillDictionary(String textFile) throws IOException {
 		ArrayList<String> lineList = getFileLines(textFile);
-		Iterator<String> it = lineList.iterator();
 		
-		while(it.hasNext()) {
-			String line = it.next();
-			String[] words = line.split(" ");
+		for(String s : lineList) {
+			String[] words = s.split(" ");
 			
 			for(int i = 0; i < words.length; i++) {
 				hT.addWord(words[i]);
@@ -36,12 +33,12 @@ public class Dictionary {
 	    BufferedReader br = new BufferedReader(fr);
 	    ArrayList<String> lineList = new ArrayList<String>();
 	    
-	    String line = "";
-	    while(line != null) {
-	    	line = br.readLine();
-	    	lineList.add(line);
+	    String thisLine;
+	    //While the line read is not null, save it to the array list
+		while ((thisLine = br.readLine()) != null) {
+	         lineList.add(thisLine);
 	    }
-	    
+	        
 	    br.close();
 	    return lineList;
 	}
