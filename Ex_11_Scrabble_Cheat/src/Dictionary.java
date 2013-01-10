@@ -6,11 +6,14 @@ import java.util.LinkedList;
 
 public class Dictionary {
 	HashTable hT;
+	private int wordCounter = 0;
 	
 	//Initializes the HashTable and fills the Dictionary with the words from the textfile 
 	public Dictionary(String textFile, int hashTableSize) throws IOException {
 		hT = new HashTable(hashTableSize);
 		fillDictionary(textFile);
+		System.out.println("The hash table has a size of " + hashTableSize + ".");
+		System.out.println("There are " + wordCounter + " words stored in it.");
 	}
 	
 	//Fills dictionary's hash table with all the words seperated by a space from the textfile
@@ -25,6 +28,7 @@ public class Dictionary {
 			//Add each word to the hash table
 			for(String word : words) {
 				hT.addWord(word);
+				wordCounter++;
 			}
 		}
 	}
