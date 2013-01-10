@@ -24,8 +24,8 @@ public class Dictionary {
 			String[] words = s.split(" ");
 			
 			//Add each word to the hash table
-			for(int i = 0; i < words.length; i++) {
-				hT.addWord(words[i]);
+			for(String word : words) {
+				hT.addWord(word);
 			}
 		}
 	}

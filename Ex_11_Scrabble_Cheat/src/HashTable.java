@@ -34,12 +34,16 @@ public class HashTable {
 	
 	//Returns the hash value of the word passed in
 	public int getHashValue(String word) {
+		//Seperate each letter of the Word and normalize it to upper cases
 		char[] letters = word.toUpperCase().toCharArray();
+		//Sort the letters alphabetically
 		Arrays.sort(letters);
+		//Calculate the hash value. ('A'-1) normalizes the value of the chars to A = 1, B = 2, C = 3 ..
 		int hashValue = 0;
 		for (int i = 0; i < word.length(); i++) {
 			hashValue += (letters[i] - ('A'-1)) * 17 ^ i;
 		}
+		//Prevent negative values (Why do they even occur?)
 		hashValue = (hashValue < 0)? hashValue*-1:hashValue; 
 		return hashValue%9999;
 	}
@@ -61,6 +65,7 @@ public class HashTable {
 		}
 	}
 	
+	//Returns the size of the hash table
 	public int getHashTableSize() {
 		return hashTable.length;
 	}
