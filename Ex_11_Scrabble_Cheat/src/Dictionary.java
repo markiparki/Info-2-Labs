@@ -9,7 +9,7 @@ public class Dictionary {
 	private int wordCounter = 0;
 	
 	//Initializes the HashTable and fills the Dictionary with the words from the textfile 
-	public Dictionary(String textFile, int hashTableSize) throws IOException {
+	public Dictionary(String textFile, int hashTableSize) throws Exception {
 		hT = new HashTable(hashTableSize);
 		fillDictionary(textFile);
 		System.out.println("The hash table has a size of " + hashTableSize + ".");
@@ -17,7 +17,7 @@ public class Dictionary {
 	}
 	
 	//Fills dictionary's hash table with all the words seperated by a space from the textfile
-	private void fillDictionary(String textFile) throws IOException {
+	private void fillDictionary(String textFile) throws Exception {
 		ArrayList<String> lineList = readFileLines(textFile);
 		
 		//For each line from the file

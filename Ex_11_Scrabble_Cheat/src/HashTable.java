@@ -11,13 +11,16 @@ public class HashTable {
 	}
 	
 	//Adds the word passed in to the HashTable at the index according to the hash value
-	public void addWord(String word) {
+	public void addWord(String word) throws Exception {
 		word = word.toUpperCase();
 		int index = getHashValue(word);
 		
 		//If theres a collision, check next index
 		while(isCollision(word, index)) {
 			index++;
+			if(index > getHashTableSize()-1) {
+				throw new Exception("No space left in hash table.");
+			}
 		}
 		//Is at the index still a list? If no create one
 		if(hashTable[index] == null) {
@@ -45,18 +48,22 @@ public class HashTable {
 		}
 		//Prevent negative values (Why do they even occur?)
 		hashValue = (hashValue < 0)? hashValue*-1:hashValue; 
-		return hashValue%9999;
+		return hashValue%9973;
 	}
 	
+	//Returns true if the first word in the list at a specific index is not a permutation with the specific word
 	public boolean isCollision(String word, int index) {
 		//Nothing in here yet? No collision
 		if(hashTable[index] == null) {
 			return false;
 		} else {
+			char[] tableWord = hashTable[index].getFirst().toCharArray();
+			Arrays.sort(tableWord);
+			char[] myWord = word.toCharArray();
+			Arrays.sort(myWord);
+
 			//Are both words permutations of each other? No collision!
-			String tableWord = hashTable[index].getFirst();
-			
-			if(getHashValue(tableWord) == getHashValue(word)) {
+			if(tableWord.equals(myWord)) {
 				return false;
 			} else {
 				//If they are not a permutation of each other: Collision!
