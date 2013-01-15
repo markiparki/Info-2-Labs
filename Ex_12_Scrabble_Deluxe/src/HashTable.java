@@ -77,4 +77,11 @@ public class HashTable {
 	public int getHashTableSize() {
 		return hashTable.length;
 	}
+	
+	public boolean isPermutation (String a, String b){
+		
+		return true;
+		
+		
+	}
 }
