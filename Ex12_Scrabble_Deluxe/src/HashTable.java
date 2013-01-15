@@ -26,6 +26,7 @@ public class HashTable {
 		if(hashTable[index] == null) {
 			hashTable[index] = new LinkedList<String>();
 		}
+		System.out.println(word + " am");
 		//Store the word in the list
 		hashTable[index].add(word);
 	}
