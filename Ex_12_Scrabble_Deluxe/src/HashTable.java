@@ -54,6 +54,8 @@ public class HashTable {
 	
 	//Returns true if the first word in the list at a specific index is not a permutation with the specific word
 	public boolean isCollision(String word, int index) {
+		word = word.toUpperCase();
+		System.out.println(word);
 		//Nothing in here yet? No collision
 		if(hashTable[index] == null) {
 			return false;
@@ -64,7 +66,7 @@ public class HashTable {
 			Arrays.sort(myWord);
 
 			//Are both words permutations of each other? No collision!
-			if(tableWord.equals(myWord)) {
+			if(Arrays.equals(tableWord, myWord)) {
 				return false;
 			} else {
 				//If they are not a permutation of each other: Collision!
@@ -78,6 +80,7 @@ public class HashTable {
 		return hashTable.length;
 	}
 	
+<<<<<<< HEAD
 	public boolean isPermutation (String a, String b){
 		
 		return true;
@@ -85,3 +88,18 @@ public class HashTable {
 		
 	}
 }
+=======
+	public boolean isPermutation(String word1, String word2) {
+		char[] word1_array = word1.toCharArray();
+		Arrays.sort(word1_array);
+		char[] word2_array = word2.toCharArray();
+		Arrays.sort(word2_array);
+		
+		if(Arrays.equals(word1_array, word2_array)) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+}
+>>>>>>> 1,3
