@@ -57,7 +57,7 @@ public class Dictionary {
 			index++;
 			//If index is bigger than the hash table size, we didn't find any word list
 			//or if we encounter an empty space
-			if(index > hT.getHashTableSize()-1 || hT.getWordList(index) == null) {
+			if(index > hT.getHashTableSize()-1  || hT.getWordList(index) == null) {
 				return null;
 			}
 		}
