@@ -3,8 +3,8 @@ import java.util.HashSet;
 
 
 public class Substring {
-	HashSet<String> subStrings;
-	HashSet<String> stringPerms;
+	private HashSet<String> subStrings;
+	private HashSet<String> stringPerms;
 	
 	public Substring(String stringLetters) {
 		subStrings = new HashSet<String>();
